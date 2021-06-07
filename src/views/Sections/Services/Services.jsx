@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Row, Col, Button } from "react-bootstrap";
@@ -7,9 +7,11 @@ import ServiceItem from "components/ServiceItem";
 import SectionHeader from "components/SectionHeader";
 import PageSection from "components/PageSection";
 
-const videoLink = "https://www.youtube.com/watch?v=0iW-o8lfcUA";
+// const videoLink = "https://www.youtube.com/watch?v=0iW-o8lfcUA";
 
 const Services = ({ className, frontmatter }) => {
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+
   if (!frontmatter) {
     return null;
   }
@@ -17,7 +19,7 @@ const Services = ({ className, frontmatter }) => {
   const { anchor, header: rootHeader, subheader: rootSubHeader, services } = frontmatter;
 
   const handleButtonClick = () => {
-    window.open(videoLink, "_blank");
+    setIsVideoVisible(true);
   };
 
   return (
@@ -33,9 +35,26 @@ const Services = ({ className, frontmatter }) => {
         ))}
       </Row>
       <Row className="justify-content-center mt-5">
-        <Button size="xl" variant="primary" className="text-uppercase" onClick={handleButtonClick}>
-          Чому саме наш факультет?
-        </Button>
+        {isVideoVisible ? (
+          <iframe
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/0iW-o8lfcUA"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+            allowFullScreen
+          />
+        ) : (
+          <Button
+            size="xl"
+            variant="primary"
+            className="text-uppercase"
+            onClick={handleButtonClick}
+          >
+            Чому саме наш факультет
+          </Button>
+        )}
       </Row>
     </PageSection>
   );
