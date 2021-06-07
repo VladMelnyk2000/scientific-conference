@@ -46,6 +46,7 @@ module.exports = {
     "gatsby-plugin-eslint",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
     {
       resolve: "gatsby-transformer-sharp",
       options: {
