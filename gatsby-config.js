@@ -2,6 +2,7 @@ const path = require("path");
 const { title, keywords, description, author, defaultLang, trackingId } = require("./config/site");
 
 module.exports = {
+  pathPrefix: "/scientific-conference",
   siteMetadata: {
     title,
     keywords,
